@@ -21,8 +21,8 @@ density = 60 # California average is 60 on busier roads
 num = int(train/1000*density) # How many cars behind, givn California average number of active vehicles per km 
 
 # Create velocity distribution. It's a truncated normal distribution, to avoid freakish speeds. 
-a = (left - mean)/stdev
-b = (right - mean)/stdev
+a = (min - mean)/stdev
+b = (max - mean)/stdev
 speeds = truncnorm.rvs(a, b, mean, stdev, size=num)
 df = pd.DataFrame (speeds, columns = ['v1'])
 
